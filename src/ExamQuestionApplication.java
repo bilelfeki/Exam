@@ -1,19 +1,23 @@
-import java.util.Scanner ; 
-import java.util.ArrayList; 
-public class MainQuestions{
+package src;
+
+;
+import java.util.Scanner ;
+import java.util.ArrayList;
+
+public class ExamQuestionApplication {
 
     public static void main(String[] args){
         int j,k,nbQcmQuestion,nbNormalQuestion,bareme ;
         String reponseCourant="",choixCourant="" ; 
         boolean x=true ; 
 
-        Choix[] reponses=new Choix[10]; 
+        QCMChoice[] reponses=new QCMChoice[10];
         QCM qcm ; 
-        Sujet sujet ; 
+        Exam sujet ;
         Scanner scanner = new Scanner(System.in) ; 
 
 
-        /**********les objets de la classe sujet ********* */
+        /**********initialise Exam attribute ********* */
         ArrayList<Integer> baremes = new ArrayList<Integer>() ;
         ArrayList<QCM> qcms = new ArrayList<QCM>();
         ArrayList<Question> quests =new ArrayList<Question>() ;
@@ -22,7 +26,7 @@ public class MainQuestions{
         System.out.println("donner le nombre de question normal") ; 
         nbNormalQuestion=scanner.nextInt() ; 
 
-        /*lire le nombre de QCM   */
+        /*lire le nombre de src.QCM   */
         System.out.println("donner le nombre de question Qcm") ; 
         nbQcmQuestion = scanner.nextInt() ;
         /*pour chaque qcm*/ 
@@ -31,7 +35,7 @@ public class MainQuestions{
             System.out.println("choisir l'enonce de la question" + j);
             reponseCourant=scanner.next() ; 
 
-            System.out.println("choisir le nombre de réponse possible pour chaque QCM "); 
+            System.out.println("choisir le nombre de réponse possible pour chaque src.QCM ");
             k=scanner.nextInt() ; 
 
             /*lire les reponses et leurs valeurs  dans un table "reponses" */  
@@ -40,7 +44,7 @@ public class MainQuestions{
                 choixCourant = scanner.next() ;
                 System.out.println("choisir vrai/faux");
                 x=scanner.nextBoolean() ;
-                reponses[h]= new Choix(choixCourant,x) ; 
+                reponses[h]= new QCMChoice(choixCourant,x) ;
             }
             System.out.println("donner le bareme de cette question") ;
             bareme =scanner.nextInt() ;
@@ -49,7 +53,7 @@ public class MainQuestions{
 
         }
 
-        /*pour chaque Question normal */ 
+        /*pour chaque src.Question normal */
         for(int i=0; i<nbNormalQuestion;i++){
             System.out.println("choisir le choix numero" + i + "de la question normale");
             choixCourant = scanner.next() ;
@@ -57,7 +61,7 @@ public class MainQuestions{
             bareme =scanner.nextInt() ;
             baremes.add(bareme) ; 
         }
-        sujet=new Sujet(qcms,quests,baremes) ;
+        sujet=new Exam(qcms,quests) ;
 
     }
     /*Remarque 
