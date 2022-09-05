@@ -1,4 +1,4 @@
-package src;
+package src.main.java;
 
 ;
 import java.util.Scanner ;
@@ -26,7 +26,7 @@ public class ExamQuestionApplication {
         System.out.println("donner le nombre de question normal") ; 
         nbNormalQuestion=scanner.nextInt() ; 
 
-        /*lire le nombre de src.QCM   */
+        /*lire le nombre de src.main.java.QCM   */
         System.out.println("donner le nombre de question Qcm") ; 
         nbQcmQuestion = scanner.nextInt() ;
         /*pour chaque qcm*/ 
@@ -35,7 +35,7 @@ public class ExamQuestionApplication {
             System.out.println("choisir l'enonce de la question" + j);
             reponseCourant=scanner.next() ; 
 
-            System.out.println("choisir le nombre de réponse possible pour chaque src.QCM ");
+            System.out.println("choisir le nombre de réponse possible pour chaque src.main.java.QCM ");
             k=scanner.nextInt() ; 
 
             /*lire les reponses et leurs valeurs  dans un table "reponses" */  
@@ -53,7 +53,7 @@ public class ExamQuestionApplication {
 
         }
 
-        /*pour chaque src.Question normal */
+        /*pour chaque src.main.java.Question normal */
         for(int i=0; i<nbNormalQuestion;i++){
             System.out.println("choisir le choix numero" + i + "de la question normale");
             choixCourant = scanner.next() ;

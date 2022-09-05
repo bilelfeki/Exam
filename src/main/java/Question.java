@@ -1,6 +1,6 @@
-package src;
+package src.main.java;
 
-import src.interfaces.QuestionInterface;
+import src.main.java.interfaces.QuestionInterface;
 
 public class Question implements QuestionInterface {
     private String questionText;
