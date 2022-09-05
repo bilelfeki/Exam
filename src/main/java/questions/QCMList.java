@@ -1,4 +1,4 @@
-package src.main.java.questions;
+package questions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,9 @@ import java.util.List;
 public class QCMList {
     private List<QCM> QCMQuestionList=new ArrayList<>();
 
+    public QCMList() {
+
+    }
 
     QCMList(List<QCM> QCMQuestionList){
         this.QCMQuestionList = QCMQuestionList;
@@ -16,6 +19,12 @@ public class QCMList {
     }
     public void setQCMQuestionList(List<QCM> QCMQuestionList) {
         this.QCMQuestionList = QCMQuestionList;
+    }
+    public  void addQCM(QCM QCM ){
+        QCMQuestionList.add(QCM);
+    }
+    public List<QCM> getAllQCM(){
+        return QCMQuestionList ;
     }
 
 

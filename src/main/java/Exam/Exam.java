@@ -1,7 +1,7 @@
-package src.main.java;
+package Exam;
 
-import src.main.java.questions.NormalQuestion;
-import src.main.java.questions.QCMList;
+import questions.NormalQuestion;
+import questions.QCMList;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,5 +1,6 @@
-package src.main.java.questions;
+package  questions ;
 
+import questions.NormalQuestion;
 import java.util.ArrayList;
 import java.util.List;
 
