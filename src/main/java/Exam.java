@@ -1,21 +1,27 @@
 package src.main.java;
 
-import java.util.ArrayList;
+import src.main.java.questions.NormalQuestion;
+import src.main.java.questions.QCMList;
+
+import java.util.HashMap;
 import java.util.Map;
 
 public class Exam {
 
-    private ArrayList<QCM> QCMQuestionList = new ArrayList<QCM>();
-    private ArrayList<Question> normalQuestionList = new ArrayList<Question>();
-    private Map<Question,Integer> questionMaxPoints;
+    private QCMList QCMQuestionList;
+    private NormalQuestion normalQuestion;
+    private Map<NormalQuestion,Integer> NormalQuestionsMaxPoints=new HashMap<>();
+    private Map<QCMList,Integer> QCMQuestionMaxPoint = new HashMap<>() ;
 
-    Exam(ArrayList<QCM> QCMQuestionList, ArrayList<Question> normalQuestionList, Map<Question,Integer> questionMaxPoints){
+    public Exam(QCMList QCMQuestionList, NormalQuestion normalQuestion, Map<NormalQuestion, Integer> normalQuestionsMaxPoints, Map<QCMList, Integer> QCMQuestionMaxPoint) {
         this.QCMQuestionList = QCMQuestionList;
-        this.normalQuestionList = normalQuestionList;
-        this.questionMaxPoints = questionMaxPoints;
+        this.normalQuestion = normalQuestion;
+        NormalQuestionsMaxPoints = normalQuestionsMaxPoints;
+        this.QCMQuestionMaxPoint = QCMQuestionMaxPoint;
     }
-    Exam(ArrayList<QCM> QCMQuestionList, ArrayList<Question> normalQuestionList){
+
+    public Exam(QCMList QCMQuestionList, NormalQuestion normalQuestion) {
         this.QCMQuestionList = QCMQuestionList;
-        this.normalQuestionList = normalQuestionList;
+        this.normalQuestion = normalQuestion;
     }
 }
