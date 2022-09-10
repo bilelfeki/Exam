@@ -1,6 +1,8 @@
 package Exam;
 
+import Config.ExamConfig;
 import questions.NormalQuestion;
+import questions.NormalQuestionList;
 import questions.QCM;
 import questions.QCMList;
 
@@ -13,18 +15,16 @@ public class ExamConsoleReader {
     private Exam exam ;
 
     private QCMList QCMQuestionList =new QCMList();
+    private NormalQuestionList normalQuestionList = new NormalQuestionList() ;
     private NormalQuestion normalQuestion;
-    private Map<NormalQuestion,Integer> NormalQuestionsMaxPoints=new HashMap<>();
-    private Map<QCMList,Integer> QCMQuestionMaxPoint = new HashMap<>() ;
-
     public ExamConsoleReader() {
+        System.out.println("Welcome Dear Teacher");
         Scanner scanner = new Scanner(System.in);
     }
 
-    public void CreateQCM(){
+    public QCM CreateQCM(){
 
         String questionText;
-        Integer numberOfChoice = 4 ;
         String questionChoice ;
         boolean isQuestionChoiceTrue ;
 
@@ -32,12 +32,11 @@ public class ExamConsoleReader {
         Map<String,Boolean> choiceList =new HashMap<>() ;
 
 
-        System.out.println("Welcome Dear Teacher");
         System.out.println("Initializing a QCM ...");
         System.out.println("Enter your question ... ");
 
         questionText=scanner.nextLine();
-        for(int i=0 ; i<numberOfChoice;i++){
+        for(int i=0 ; i<ExamConfig.QCMChoiceNumber;i++){
             System.out.println("Enter a choice for the QCM ... ");
             questionChoice = scanner.nextLine() ;
             System.out.println("is this choice true <true/false>");
@@ -47,18 +46,17 @@ public class ExamConsoleReader {
             choiceList.put(questionChoice,isQuestionChoiceTrue);
 
         }
-        /**
-         * instantiate a QCM
-         */
         QCM = new QCM(questionText,choiceList) ;
-        /**
-         * add the question to QCMList
-         */
+        return QCM ;
+    }
+    private void addQCMToQCMList(QCM QCM){
         QCMQuestionList.addQCM(QCM);
     }
+    private void addNormalQuestionToNormalQuestionList(NormalQuestion normalQuestion){
+        normalQuestionList.addNormalQuestion(normalQuestion);
+    }
+    public NormalQuestion CreateNormalQuestion(){
 
-    public void CreateNormalQuestion(){
-        System.out.println("Welcome Dear Teacher");
         System.out.println("Initializing a Normal Question ...");
 
 
@@ -69,7 +67,17 @@ public class ExamConsoleReader {
         System.out.println("Enter the response Expected ... ");
         questionResponse = scanner.nextLine() ;
         normalQuestion = new NormalQuestion(questionText,questionResponse);
+        return normalQuestion ;
     }
+    public Exam  CreateAnExam(){
+        for(int i=0;i< ExamConfig.QCMQuestionNumber;i++){
+            addQCMToQCMList(CreateQCM());
+        }
 
+        for(int i=0;i<ExamConfig.NormalQuestionNumber;i++){
+            addNormalQuestionToNormalQuestionList(CreateNormalQuestion());
+        }
+        return new Exam(QCMQuestionList,normalQuestionList) ;
+    }
 
 }

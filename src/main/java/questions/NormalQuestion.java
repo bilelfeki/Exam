@@ -2,16 +2,21 @@ package questions ;
 public class NormalQuestion {
     private String questionText;
     private String questionResponse ;
+    public NormalQuestion(){
+        this.questionText="" ;
+        this.questionResponse="" ;
+    }
+    public NormalQuestion(String questionText){
+        this.questionText =questionText ;
+    }
 
     public NormalQuestion(String questionText, String questionResponse) {
         this.questionText = questionText;
         this.questionResponse = questionResponse;
     }
-    NormalQuestion(String questionText){
-        this.questionText =questionText ;
-    }
 
     public String getQuestionText(){
         return this.questionText;
     }
+    public String getQuestionResponse(){ return this.questionResponse ; }
 }
