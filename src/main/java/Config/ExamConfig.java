@@ -4,4 +4,6 @@ public class ExamConfig {
     public static int QCMChoiceNumber =4 ;
     public static int QCMQuestionNumber = 2 ;
     public static int NormalQuestionNumber = 3 ;
+
+    public static String ExamFileOutputPath ="D:/myfile.txt/" ;
 }
