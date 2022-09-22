@@ -1,7 +1,5 @@
 package Exam;
 
-import questions.QCM;
-
 public class ExamConsolePrinter {
     private Exam exam = new Exam() ;
 

@@ -15,8 +15,8 @@ import static Config.ExamConfig.ExamFileOutputPath;
 public class ExamFile {
 
     private Exam exam = new Exam() ;
-    private FileWriter fileWriter = new FileWriter(ExamFileOutputPath) ;
-    private BufferedWriter ExamOutput =new BufferedWriter(fileWriter) ;
+    private final  FileWriter fileWriter = new FileWriter(ExamFileOutputPath) ;
+    private final BufferedWriter ExamOutput =new BufferedWriter(fileWriter) ;
 
     public String stars = "***********************************************";
 
@@ -46,7 +46,7 @@ public class ExamFile {
         IntStream.range(0,normalQuestionList.size()).forEach(
                 index ->{
                     try {
-                        ExamOutput.write("\n"+ "Q" +((Integer)index).toString() + "-" + normalQuestionList.get(index).getQuestionText() + "\n");
+                        ExamOutput.write("\n"+ "Q" + index + "-" + normalQuestionList.get(index).getQuestionText() + "\n");
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -59,7 +59,7 @@ public class ExamFile {
         IntStream.range(0, QCMQuestionList.size()).forEach(
                 index ->{
                     try {
-                        ExamOutput.write("\n"+ "Q" +((Integer)index).toString() + "-" + QCMQuestionList.get(index).getQuestionText()+ "\n"  );
+                        ExamOutput.write("\n"+ "Q" + index + "-" + QCMQuestionList.get(index).getQuestionText()+ "\n"  );
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

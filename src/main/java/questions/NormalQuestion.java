@@ -1,6 +1,6 @@
 package questions ;
 public class NormalQuestion {
-    private String questionText;
+    private final String questionText;
     private String questionResponse ;
     public NormalQuestion(){
         this.questionText="" ;

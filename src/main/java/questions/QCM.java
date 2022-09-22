@@ -4,8 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class QCM  {
-    private String questionText;
-    private Map<String,Boolean> choiceList =new HashMap<>() ;
+    private final String  questionText;
+    private final Map<String,Boolean> choiceList  ;
+
+    public QCM() {
+        questionText = "";
+        choiceList =new HashMap<>();
+    }
 
     public QCM(String questionText, Map<String,Boolean> choiceList){
         this.questionText = questionText;

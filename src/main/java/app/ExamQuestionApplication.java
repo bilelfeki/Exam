@@ -14,7 +14,6 @@ public class ExamQuestionApplication {
 
 
     public static void main(String[] args){
-
         Exam exam ;
         ExamConsoleReader examConsoleReader= new ExamConsoleReader();
         ExamConsolePrinter examConsolePrinter = new ExamConsolePrinter();
