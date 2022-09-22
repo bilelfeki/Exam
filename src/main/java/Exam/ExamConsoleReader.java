@@ -1,32 +1,33 @@
 package Exam;
 
 import Config.ExamConfig;
+import exceptions.InvalidQCMChoiceException;
 import questions.NormalQuestion;
 import questions.NormalQuestionList;
 import questions.QCM;
 import questions.QCMList;
+import validators.ConsoleValidator;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class ExamConsoleReader {
-    private Scanner scanner = new Scanner(System.in);
-    private Exam exam ;
-
-    private QCMList QCMQuestionList =new QCMList();
-    private NormalQuestionList normalQuestionList = new NormalQuestionList() ;
-    private NormalQuestion normalQuestion;
+    private final Scanner scanner = new Scanner(System.in);
+    private final QCMList QCMQuestionList =new QCMList();
+    private final NormalQuestionList normalQuestionList = new NormalQuestionList() ;
     public ExamConsoleReader() {
         System.out.println("Welcome Dear Teacher");
-        Scanner scanner = new Scanner(System.in);
     }
 
-    public QCM CreateQCM(){
+    public QCM CreateQCM()  {
 
         String questionText;
         String questionChoice ;
-        boolean isQuestionChoiceTrue ;
+
+        String isQuestionChoiceTrue ;
+        boolean isQuestChoiceTrue = false ;
+
 
         QCM QCM ;
         Map<String,Boolean> choiceList =new HashMap<>() ;
@@ -41,14 +42,23 @@ public class ExamConsoleReader {
             questionChoice = scanner.nextLine() ;
             System.out.println("is this choice true <true/false>");
 
-            isQuestionChoiceTrue=scanner.hasNextBoolean() ;
+            isQuestionChoiceTrue=scanner.next() ;
+            try{
+                ConsoleValidator.verifyAStringTrueOrFalse(isQuestionChoiceTrue) ;
+                isQuestChoiceTrue = Boolean.parseBoolean(isQuestionChoiceTrue);
+            }
+            catch (InvalidQCMChoiceException e){
+                System.out.println("you Should enter either true or false ");
+            }
             scanner.nextLine();
-            choiceList.put(questionChoice,isQuestionChoiceTrue);
+            choiceList.put(questionChoice,isQuestChoiceTrue);
 
         }
         QCM = new QCM(questionText,choiceList) ;
         return QCM ;
     }
+
+
     private void addQCMToQCMList(QCM QCM){
         QCMQuestionList.addQCM(QCM);
     }
@@ -56,13 +66,13 @@ public class ExamConsoleReader {
         normalQuestionList.addNormalQuestion(normalQuestion);
     }
     public NormalQuestion CreateNormalQuestion(){
-
-        System.out.println("Initializing a Normal Question ...");
-
-
+        NormalQuestion normalQuestion;
         String questionText;
         String questionResponse ;
+
+        System.out.println("Initializing a Normal Question ...");
         System.out.println("Enter your Normal Question  ... ");
+
         questionText = scanner.nextLine() ;
         System.out.println("Enter the response Expected ... ");
         questionResponse = scanner.nextLine() ;
@@ -71,7 +81,9 @@ public class ExamConsoleReader {
     }
     public Exam  CreateAnExam(){
         for(int i=0;i< ExamConfig.QCMQuestionNumber;i++){
-            addQCMToQCMList(CreateQCM());
+
+                addQCMToQCMList(CreateQCM());
+
         }
 
         for(int i=0;i<ExamConfig.NormalQuestionNumber;i++){
