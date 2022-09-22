@@ -1,13 +1,10 @@
 package app;
 
-;
 import Exam.Exam;
 import Exam.ExamConsolePrinter;
 import Exam.ExamConsoleReader;
 import output.ExamFile;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 
 public class ExamQuestionApplication {
